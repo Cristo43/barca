@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script>
+        function Validar(){
+            if(document.miformulario.usuario.value==""){
+                alert("Campo usuario es obligatorio");
+                //document.miFormulario.usuario.focus();
+            }
+            else{
+                if (document.miformulario.contrasenna.value.length !=5){
+                    alert("Contraseña debe tener 5 caracteres");
+                }
+                else{
+                    if (document.miformulario.contrasenna.value!="2SMR2"){
+                    alert("Credenciales inválidas");
+                }
+                    else{
+                    var n=document.miformulario.sexo.value;
+                    var contador=0
+                    if (document.miformulario.idiomas1.checked){
+                        contador=contador+1;
+                    }
+                    if (document.miformulario.idiomas2.checked){
+                        contador=contador+1;
+                    }
+                    if (document.miformulario.idiomas3.checked){
+                        contador=contador+1;
+                    }
+                    alert("Hablas "+ contador + " idiomas")
+                    }
+                }
+            }
+        }
+        function GetProfesor(){
+            var p=document.miformulario.asignaturas.value;
+            document.miformulario.profesor.value=p;
+        }
+    </script>
+
+</head>
+<body>
+    <center>    
+        <h2>Ejemplo Formulario HTML</h2>
+    </center>
+    <hr>
+    <br>
+    <form name="miformulario">
+        <fieldset>
+        <legend>Introduce tus datos</legend>
+        <label for="usuario">Nombre</label>
+        <input type="text" name="usuario" placeholder="Introduce nombre y apellido">
+        <br><br>
+        <label for="contrasenna">Contraseña</label>
+        <input type="password" name="contrasenna"  placeholder="Contraseña" maxlength="8" size="8" >
+        <br><br>
+        <!--
+        Esto es un comentario
+        -->
+        <label for="curso">Curso</label>
+        <input type="text" name="curso" value="SMR2">
+        <br><br>
+        <textarea name="opinion" rows="10" cols="50" placeholder="Dame tu opinión"></textarea>
+        <br><br>
+        <label for="asignaturas">Elige tu favorita</label><br>
+        <select name="asignaturas" onchange="GetProfesor()">
+            <option value="Eva Moya">Sistemas Operativos</option>
+            <option value="Paco Artés">Servicios en red</option>
+            <option value="Rosa Rodríguez">Aplicaciones web</option>
+            <option value="Luis Palazuelos">Seguridad y alta disponibilidad</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;
+        <label for="profesor">Profesor</label>
+        <input type="text" name="profesor" placeholder="Profesor">
+        <br><br>
+        <label for="sexo">Sexo</label><br>
+        <input type="radio" name="sexo">Hombre
+        <input type="radio" name="sexo">Mujer
+        <input type="radio" name="sexo" checked>Dylan
+        <br><br>
+        <label for="idiomas">Idiomas</label><br>
+        <input type="checkbox" name="idiomas1">Inglés
+        <input type="checkbox" name="idiomas2">Aleman
+        <input type="checkbox" name="idiomas3">Inca
+        <br><br><br>
+        <!--
+        Manera más antigua de poner un botón
+        <input type="submit" name="boton" value="Enviar">
+        -->
+        <center>
+        <button name="boton" id="azul" class="boton" onclick="Validar()">Enviar</button>
+        <input type="reset" value="Cancelar" id="rojo" class="boton">
+        </center>
+    </fieldset>
+    </form>
+</body>
+</html>
